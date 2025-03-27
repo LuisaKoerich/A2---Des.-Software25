@@ -1,5 +1,3 @@
-import java.util.List;
-
 class Pizza {
     String nome;
     double preco;
@@ -12,7 +10,6 @@ class Pizza {
     }
 }
 
-import java.util.ArrayList;
 class Pedido {
     private List<Pizza> pizzas = new ArrayList<>();
     private String endereco;

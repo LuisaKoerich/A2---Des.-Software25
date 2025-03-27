@@ -1,0 +1,39 @@
+import java.util.List;
+
+class Pizza {
+    String nome;
+    double preco;
+    List<String> ingredientes;
+    
+    public Pizza(String nome, double preco, List<String> ingredientes) {
+        this.nome = nome;
+        this.preco = preco;
+        this.ingredientes = ingredientes;
+    }
+}
+
+import java.util.ArrayList;
+class Pedido {
+    private List<Pizza> pizzas = new ArrayList<>();
+    private String endereco;
+    
+    public Pedido(String endereco) {
+        this.endereco = endereco;
+    }
+    
+    public void adicionarPizza(Pizza pizza) {
+        pizzas.add(pizza);
+    }
+    
+    public void cancelarPedido() {
+        pizzas.clear();
+        System.out.println("Pedido cancelado!");
+    }
+    
+    public void exibirPedido() {
+        System.out.println("Endereço de entrega: " + endereco);
+        for (Pizza pizza : pizzas) {
+            System.out.println("Pizza: " + pizza.nome + " - R$" + pizza.preco);
+        }
+    }
+}

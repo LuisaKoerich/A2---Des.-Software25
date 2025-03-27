@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+class Contato {
+    String nome;
+    String telefone;
+    
+    public Contato(String nome, String telefone) {
+        this.nome = nome;
+        this.telefone = telefone;
+    }
+}
+
+class Agenda {
+    private ArrayList<Contato> contatos = new ArrayList<>();
+    
+    public void adicionarContato(Contato contato) {
+        contatos.add(contato);
+    }
+    
+    public Contato buscarContato(String nome) {
+        for (Contato contato : contatos) {
+            if (contato.nome.equals(nome)) {
+                return contato;
+            }
+        }
+        return null;
+    }
+}

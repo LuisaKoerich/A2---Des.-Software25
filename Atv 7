@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Produto {
     String nome;
     int codigo;
@@ -9,5 +11,38 @@ class Produto {
         this.codigo = codigo;
         this.quantidade = quantidade;
         this.preco = preco;
+    }
+}
+
+class Estoque {
+    private ArrayList<Produto> produtos = new ArrayList<>();
+    
+    public void adicionarProduto(Produto produto) {
+        produtos.add(produto);
+    }
+    
+    public void atualizarProduto(int codigo, int novaQuantidade, double novoPreco) {
+        for (Produto produto : produtos) {
+            if (produto.codigo == codigo) {
+                produto.quantidade = novaQuantidade;
+                produto.preco = novoPreco;
+                return;
+            }
+        }
+        System.out.println("Produto não encontrado!");
+    }
+    
+    public void removerProduto(int codigo) {
+        produtos.removeIf(produto -> produto.codigo == codigo);
+    }
+    
+    public void gerarRelatorio() {
+        double valorTotal = 0;
+        System.out.println("Relatório de Estoque:");
+        for (Produto produto : produtos) {
+            System.out.println("Nome: " + produto.nome + ", Código: " + produto.codigo + ", Quantidade: " + produto.quantidade + ", Preço: " + produto.preco);
+            valorTotal += produto.quantidade * produto.preco;
+        }
+        System.out.println("Valor total em estoque: R$" + valorTotal);
     }
 }
